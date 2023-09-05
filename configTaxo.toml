@@ -9,19 +9,14 @@ series = "series"
 [privacy]
 
   [privacy.vimeo]
-    disabled = false
-    simple = true
+    disabled = true
 
   [privacy.twitter]
-    disabled = false
-    enableDNT = true
-    simple = true
-    disableInlineCSS = true
+    disabled = true
 
   [privacy.instagram]
-    disabled = false
+    disabled = true
     simple = true
 
   [privacy.youtube]
-    disabled = false
-    privacyEnhanced = true
+    disabled = true
