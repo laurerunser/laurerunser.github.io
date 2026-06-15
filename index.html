@@ -80,7 +80,7 @@
     </div>
     <div style="position:absolute;inset:0;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:38px;padding-top:110px;">
       <!-- TV UNIT -->
-      <div style="position:relative;margin-top:70px;">
+      <div style="position:relative;margin-top:70px;z-index:50;">
         <div style="position:absolute;left:50%;top:-58px;transform:translateX(-50%);width:160px;height:60px;">
           <div style="position:absolute;left:50%;bottom:0;width:2px;height:14px;background:#3a2f1c;transform:translateX(-50%);"></div>
           <div style="position:absolute;left:42px;bottom:6px;width:90px;height:2px;background:linear-gradient(90deg,transparent,#6a5430,transparent);transform:rotate(-26deg);transform-origin:left center;"></div>
@@ -92,13 +92,21 @@
           <div style="position:relative;flex:1;border-radius:14px;overflow:hidden;background:#050402;border:4px solid #0a0805;box-shadow:inset 0 0 50px rgba(0,0,0,.95),inset 0 0 0 2px rgba(255,176,0,.06);">
             <div style="position:relative;width:100%;aspect-ratio:4/3;background:#0a0805;">
               <div style="position:absolute;inset:0;display:{{ roseMediaDisplay }};background:#000;">
-                <img src="assets/websites-i-built/rose_bertrand/rose-bertrand.jpg" alt="Rose Bertrand — homepage" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+                <img src="assets/websites-i-built/rose_bertrand/rose-bertrand.jpg" alt="Rose Bertrand — site" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide0Display }};">
+                <img src="assets/websites-i-built/rose_bertrand/rose-bertrand-2.png" alt="Rose Bertrand — detail 1" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide1Display }};">
+                <img src="assets/websites-i-built/rose_bertrand/rose-bertrand-3.png" alt="Rose Bertrand — detail 2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide2Display }};">
+                <img src="assets/websites-i-built/rose_bertrand/rose-bertrand-4.png" alt="Rose Bertrand — detail 3" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide3Display }};">
               </div>
               <div style="position:absolute;inset:0;display:{{ motionMediaDisplay }};background:#000;">
-                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/websites-i-built/in_motion/motion-1.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></video>
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/websites-i-built/in_motion/motion-1.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide0Display }};"></video>
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/websites-i-built/in_motion/motion-2.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide1Display }};"></video>
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/websites-i-built/in_motion/motion-3.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide2Display }};"></video>
               </div>
               <div style="position:absolute;inset:0;display:{{ sandoreMediaDisplay }};background:#000;">
-                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/websites-i-built/sandolore/sandolore.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></video>
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/websites-i-built/sandolore/sandolore.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide0Display }};"></video>
+                <img src="assets/websites-i-built/sandolore/sandolore-2.jpg" alt="Sandolore — screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide1Display }};">
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/websites-i-built/sandolore/sandolore-3.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide2Display }};"></video>
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/websites-i-built/sandolore/sandolore-4.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:{{ slide3Display }};"></video>
               </div>
               <canvas id="cvTV" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
               <div style="position:absolute;top:10px;right:12px;font-size:10px;letter-spacing:0.18em;color:#ffce5c;background:rgba(0,0,0,.4);padding:3px 7px;border-radius:3px;z-index:2;">CH {{ chNum }}</div>
@@ -236,9 +244,9 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.CH = [
-      { n: '01', name: 'ROSE BERTRAND', tag: 'Speculative fiction · portfolio', url: 'www.rosebertrand.com', href: 'https://www.rosebertrand.com', slides: 1 },
-      { n: '02', name: 'IN-MOTION ART', tag: 'Animated art experiment', url: 'laurerunser.github.io/in-motion-art', href: 'https://laurerunser.github.io/in-motion-art/', slides: 1 },
-      { n: '03', name: 'SANDOLORE', tag: 'Author site · Sandolore Sykes', url: 'laurerunser.github.io/author-website-sandolore', href: 'https://laurerunser.github.io/author-website-sandolore/', slides: 1 }
+      { n: '01', name: 'ROSE BERTRAND', tag: 'Speculative fiction · portfolio', url: 'www.rosebertrand.com', href: 'https://www.rosebertrand.com', slides: 4 },
+      { n: '02', name: 'IN-MOTION ART', tag: 'Animated art experiment', url: 'laurerunser.github.io/in-motion-art', href: 'https://laurerunser.github.io/in-motion-art/', slides: 3 },
+      { n: '03', name: 'SANDOLORE', tag: 'Author site · Sandolore Sykes', url: 'laurerunser.github.io/author-website-sandolore', href: 'https://laurerunser.github.io/author-website-sandolore/', slides: 4 }
     ];
     let anim = true;
     try { const v = localStorage.getItem('laure.anim'); if (v === '0') anim = false; } catch (e) {}
@@ -298,13 +306,6 @@ class Component extends DCLogic {
       this.initNoise('cvWork');
     } else if (p === 'websites') {
       this.initWebBg(); this.initTV();
-      if (this.state.anim) {
-        this._slideInt = setInterval(() => {
-          if (this.state.page !== 'websites' || !this.state.power) return;
-          const slides = this.CH[this.state.channel].slides;
-          if (slides > 1) this.setState(s => ({ slide: (s.slide + 1) % slides }));
-        }, 3200);
-      }
     } else if (p === 'cv') {
       this.initCvBg();
       if (this.state.anim) this.initCvBoot(); else this.fillCvBootInstant();
@@ -688,7 +689,6 @@ class Component extends DCLogic {
         ctx.fillStyle = '#050402'; ctx.fillRect(0, 0, w, h);
         ctx.fillStyle = 'rgba(255,90,60,0.8)'; ctx.beginPath(); ctx.arc(w / 2, h / 2, 2.5, 0, 7); ctx.fill();
       }
-      this.drawCRT(ctx, w, h);
     };
     if (!this.state.anim) { drawOnce(); return; }
     let last = performance.now();
@@ -701,13 +701,12 @@ class Component extends DCLogic {
       if (!this.state.power) {
         ctx.fillStyle = '#050402'; ctx.fillRect(0, 0, w, h);
         ctx.fillStyle = 'rgba(255,90,60,0.8)'; ctx.beginPath(); ctx.arc(w / 2, h / 2, 2.5, 0, 7); ctx.fill();
-        this.drawCRT(ctx, w, h); this._raf.tv = requestAnimationFrame(draw); return;
+        this._raf.tv = requestAnimationFrame(draw); return;
       }
       if (this.tvStatic > 0) { this.tvStatic -= dt; this.drawStatic(ctx, w, h); }
       else {
-        /* all channels render media behind the canvas — canvas only carries the CRT overlay */
+        /* all channels render media behind the canvas — the canvas stays clear over the media */
       }
-      this.drawCRT(ctx, w, h);
       this._raf.tv = requestAnimationFrame(draw);
     };
     this._raf.tv = requestAnimationFrame(draw);
@@ -1103,13 +1102,11 @@ class Component extends DCLogic {
       chDigitColor,
       roseMediaDisplay: (this.state.channel === 0 && this.state.power) ? 'block' : 'none',
       motionMediaDisplay: (this.state.channel === 1 && this.state.power) ? 'block' : 'none',
-      motionSlide0Display: this.state.slide === 0 ? 'block' : 'none',
-      motionSlide1Display: this.state.slide === 1 ? 'block' : 'none',
-      motionSlide2Display: this.state.slide === 2 ? 'block' : 'none',
       sandoreMediaDisplay: (this.state.channel === 2 && this.state.power) ? 'block' : 'none',
-      sandoreSlide0Display: this.state.slide === 0 ? 'block' : 'none',
-      sandoreSlide1Display: this.state.slide === 1 ? 'block' : 'none',
-      sandoreSlide2Display: this.state.slide === 2 ? 'block' : 'none',
+      slide0Display: this.state.slide === 0 ? 'block' : 'none',
+      slide1Display: this.state.slide === 1 ? 'block' : 'none',
+      slide2Display: this.state.slide === 2 ? 'block' : 'none',
+      slide3Display: this.state.slide === 3 ? 'block' : 'none',
       toggleAnim: () => this.setState(s => ({ anim: !s.anim })),
       toggleLabel: anim ? 'ON' : 'OFF',
       toggleLabelColor: anim ? '#ffce5c' : '#8a8273',
