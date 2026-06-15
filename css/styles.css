@@ -545,6 +545,7 @@ a { color: inherit; }
   position: relative;
   transform: scale(1.1);
   transform-origin: center;
+  z-index: 41; /* lift above the global .crt overlay (z-40) so the screen reads clearly */
 }
 
 .tv__antenna {

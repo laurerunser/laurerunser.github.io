@@ -15,7 +15,7 @@
       url: 'www.rosebertrand.com',
       href: 'https://www.rosebertrand.com',
       mediaKey: 'rose',
-      slides: 1,
+      slides: 4,
     },
     {
       n: '02',
@@ -33,7 +33,7 @@
       url: 'laurerunser.github.io/author-website-sandolore',
       href: 'https://laurerunser.github.io/author-website-sandolore/',
       mediaKey: 'sandolore',
-      slides: 1,
+      slides: 4,
     },
   ];
 
@@ -98,9 +98,11 @@
   }
 
   function setSlideVisibility(prefix, slide) {
-    for (let i = 0; i < 3; i++) {
-      const el = document.getElementById('tv-' + prefix + '-' + i);
-      if (el) el.style.display = i === slide ? 'block' : 'none';
+    let i = 0;
+    let el;
+    while ((el = document.getElementById('tv-' + prefix + '-' + i))) {
+      el.style.display = i === slide ? 'block' : 'none';
+      i++;
     }
   }
 
@@ -291,6 +293,7 @@
         const step = Number(btn.getAttribute('data-slide-step'));
         const count = CHANNELS[state.channel].slides;
         setSlide((state.slide + step + count) % count);
+        restartSlideTimer(); // manual nav resets the auto-cycle so the choice sticks
       });
     });
     document.querySelectorAll('[data-power-btn]').forEach((btn) => {
