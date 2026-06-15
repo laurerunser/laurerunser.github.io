@@ -11,7 +11,7 @@
     {
       n: '01',
       name: 'ROSE BERTRAND',
-      tag: 'Speculative author · portfolio',
+      tag: 'Speculative fiction · writing portfolio',
       url: 'www.rosebertrand.com',
       href: 'https://www.rosebertrand.com',
       mediaKey: 'rose',
