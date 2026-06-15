@@ -45,6 +45,30 @@ body {
 
 a { color: inherit; }
 
+/* clear keyboard-focus indicator (visible on dark CRT background) */
+:focus-visible {
+  outline: 2px solid var(--amber-light);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* skip link — hidden until focused, jumps past the nav to the content */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -120px;
+  z-index: 100;
+  background: var(--amber);
+  color: #080603;
+  padding: 10px 16px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 0 0 6px 6px;
+  transition: top 0.15s;
+}
+.skip-link:focus { top: 0; }
+
 /* =========================================================
    keyframes
    ========================================================= */
@@ -94,6 +118,7 @@ a { color: inherit; }
   width: 100%;
   height: 100%;
   display: block;
+  pointer-events: none; /* decorative — never intercept taps/clicks */
 }
 .page__content {
   position: absolute;
@@ -135,6 +160,11 @@ a { color: inherit; }
   height: 14vh;
   background: linear-gradient(to bottom, rgba(255, 176, 0, 0.07), transparent);
   animation: scanbar 5s linear infinite;
+}
+/* CV: sweep runs a single pass (while the log types) then stops off-screen */
+.crt__sweep--once {
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 .crt__vignette {
   position: absolute;
@@ -438,13 +468,15 @@ a { color: inherit; }
   min-width: 340px;
   max-width: 580px;
 }
+/* status sits full-width on top of the two log columns */
+.cv-col--status { flex-basis: 100%; }
 .cv-col__header {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.26em;
   color: var(--text);
-  margin-bottom: 14px;
+  margin: 0 0 14px;
 }
 .cv-col__body {
   white-space: pre;
@@ -509,7 +541,11 @@ a { color: inherit; }
 /* =========================================================
    TV unit
    ========================================================= */
-.tv { position: relative; }
+.tv {
+  position: relative;
+  transform: scale(1.1);
+  transform-origin: center;
+}
 
 .tv__antenna {
   position: absolute;
@@ -599,7 +635,7 @@ a { color: inherit; }
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: none;
 }
 .tv__screen-aspect > canvas {
@@ -866,6 +902,103 @@ a { color: inherit; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* =========================================================
+   responsive — phones & small tablets
+   The desktop design is a set of fixed, full-viewport "terminal"
+   panels (overflow:hidden, absolute layout). On narrow screens we
+   let the page scroll and reflow everything into a single column.
+   ========================================================= */
+@media (max-width: 920px) {
+  /* allow the page to grow & scroll instead of clipping content */
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+  .page {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+  /* keep the decorative canvas as a fixed, viewport-sized backdrop */
+  .page__canvas { position: fixed; }
+
+  /* nav flows at the top and wraps instead of overflowing */
+  .nav {
+    position: static;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 16px 5vw;
+  }
+  .nav__links {
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    font-size: 11px;
+  }
+
+  /* content flows normally below the nav */
+  .page__content {
+    position: static;
+    inset: auto;
+    height: auto;
+    min-height: 0;
+    justify-content: flex-start;
+    padding: 24px 6vw 132px;
+  }
+
+  /* bottom-corner controls float over the scrolling content */
+  .anim-toggle,
+  .btn-link--corner {
+    position: fixed;
+  }
+
+  /* websites page: stack TV / remote / info vertically, fit width */
+  .websites-title {
+    position: static;
+    padding: 12px 5vw 0;
+  }
+  .websites-stage {
+    position: static;
+    flex-direction: column;
+    height: auto;
+    gap: 22px;
+    padding: 22px 5vw 132px;
+  }
+  .tv { order: 0; transform: none; }
+  .remote { order: 1; }
+  .info-panel { order: 2; }
+  .tv__body { width: min(92vw, 440px); }
+  .info-panel { width: min(92vw, 440px); }
+}
+
+@media (max-width: 680px) {
+  /* CV: single column — status, then career, then education */
+  .cv-cols {
+    flex-direction: column;
+    gap: 26px;
+    min-height: 0;
+  }
+  .cv-col {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  /* wrap long log lines instead of forcing horizontal scroll */
+  .cv-col__body { white-space: pre-wrap; }
+
+  /* contact rows stack label over value */
+  .contact-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .contact-row__email-block { align-items: flex-start; }
+
+  /* smaller footprint for the floating controls on phones */
+  .anim-toggle { font-size: 9.5px; padding: 7px 10px; }
 }
 
 /* =========================================================

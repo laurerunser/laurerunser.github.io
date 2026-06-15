@@ -12,16 +12,17 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <main class="page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main class="page" id="main">
     <canvas class="page__canvas" id="bg-canvas" aria-hidden="true"></canvas>
 
     <header class="nav">
       <a class="nav__brand" href="index.html">◢ LAURE.SYS</a>
       <nav class="nav__links" aria-label="primary">
         <a class="nav__link" href="index.html">ABOUT</a>
-        <a class="nav__link nav__link--active" href="cv.html">CV</a>
+        <a class="nav__link nav__link--active" href="cv.html" aria-current="page">CV</a>
         <a class="nav__link" href="personal-projects.html">PERSONAL_PROJECTS</a>
-        <a class="nav__link" href="websites-i-made.html">WEBSITES_I_MADE</a>
+        <a class="nav__link" href="websites-i-made.html">WEBSITES_I_BUILT</a>
         <a class="nav__link" href="contact.html">CONTACT</a>
       </nav>
     </header>
@@ -31,18 +32,22 @@
       <h1 class="hero hero--cv">CV</h1>
 
       <div class="cv-cols">
-        <div class="cv-col">
-          <div class="cv-col__header">CAREER LOG</div>
-          <div class="cv-col__body" id="boot-work" aria-live="polite"></div>
+        <div class="cv-col cv-col--status">
+          <h2 class="cv-col__header">STATUS</h2>
+          <div class="cv-col__body" id="boot-status"></div>
         </div>
         <div class="cv-col">
-          <div class="cv-col__header">EDUCATION LOG</div>
-          <div class="cv-col__body" id="boot-rest" aria-live="polite"></div>
+          <h2 class="cv-col__header">CAREER LOG</h2>
+          <div class="cv-col__body" id="boot-work"></div>
+        </div>
+        <div class="cv-col">
+          <h2 class="cv-col__header">EDUCATION LOG</h2>
+          <div class="cv-col__body" id="boot-rest"></div>
         </div>
       </div>
     </section>
 
-    <a class="btn-link" style="position:absolute;right:5vw;top:50%;transform:translateY(-180px);z-index:55;" href="https://github.com/laurerunser" target="_blank" rel="noopener">
+    <a class="btn-link btn-link--corner" href="https://github.com/laurerunser" target="_blank" rel="noopener">
       <span class="btn-link__dot"></span>GITHUB / LAURERUNSER ↗
     </a>
 
@@ -54,7 +59,7 @@
 
   <div class="crt" aria-hidden="true">
     <div class="crt__scanlines"></div>
-    <div class="crt__sweep"></div>
+    <div class="crt__sweep crt__sweep--once"></div>
     <div class="crt__vignette"></div>
   </div>
 

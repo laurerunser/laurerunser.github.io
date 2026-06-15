@@ -25,10 +25,11 @@
     '> ',
     '> [2019 — 2022]   undergraduate @ université paris cité',
     '> ',
-    '## STATUS',
+  ];
+
+  const STATUS_LINES = [
     '> open to opportunities',
     '> open to freelance work',
-    '> ',
   ];
 
   let timers = [];
@@ -208,11 +209,13 @@
     clearTimers();
     initBg();
     if (window.Laure.isAnim()) {
+      typeCol('boot-status', STATUS_LINES, true, 200);
       typeCol('boot-work', WORK_LINES, false, 200);
-      typeCol('boot-rest', REST_LINES, true, 200);
+      typeCol('boot-rest', REST_LINES, false, 200);
     } else {
+      fillColInstant('boot-status', STATUS_LINES, true);
       fillColInstant('boot-work', WORK_LINES, false);
-      fillColInstant('boot-rest', REST_LINES, true);
+      fillColInstant('boot-rest', REST_LINES, false);
     }
   }
 

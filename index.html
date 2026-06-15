@@ -40,7 +40,7 @@
       <a onClick="{{ goHome }}" style="cursor:pointer;color:{{ colHome }};text-decoration:none;" style-hover="color:#ffce5c">ABOUT</a>
       <a onClick="{{ goCV }}" style="cursor:pointer;color:{{ colCV }};text-decoration:none;" style-hover="color:#ffce5c">CV</a>
       <a onClick="{{ goWork }}" style="cursor:pointer;color:{{ colWork }};text-decoration:none;" style-hover="color:#ffce5c">PERSONAL_PROJECTS</a>
-      <a onClick="{{ goWeb }}" style="cursor:pointer;color:{{ colWeb }};text-decoration:none;" style-hover="color:#ffce5c">WEBSITES_I_MADE</a>
+      <a onClick="{{ goWeb }}" style="cursor:pointer;color:{{ colWeb }};text-decoration:none;" style-hover="color:#ffce5c">WEBSITES_I_BUILT</a>
       <a onClick="{{ goContact }}" style="cursor:pointer;color:{{ colContact }};text-decoration:none;" style-hover="color:#ffce5c">CONTACT</a>
     </nav>
   </header>
@@ -92,15 +92,13 @@
           <div style="position:relative;flex:1;border-radius:14px;overflow:hidden;background:#050402;border:4px solid #0a0805;box-shadow:inset 0 0 50px rgba(0,0,0,.95),inset 0 0 0 2px rgba(255,176,0,.06);">
             <div style="position:relative;width:100%;aspect-ratio:4/3;background:#0a0805;">
               <div style="position:absolute;inset:0;display:{{ roseMediaDisplay }};background:#000;">
-                <img src="assets/rose-bertrand.jpg" alt="Rose Bertrand — homepage" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+                <img src="assets/websites-i-built/rose_bertrand/rose-bertrand.jpg" alt="Rose Bertrand — homepage" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
               </div>
               <div style="position:absolute;inset:0;display:{{ motionMediaDisplay }};background:#000;">
-                <img src="assets/motion-home.jpg" alt="In-Motion Art — home" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/websites-i-built/in_motion/motion-1.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></video>
               </div>
               <div style="position:absolute;inset:0;display:{{ sandoreMediaDisplay }};background:#000;">
-                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/sandolore-1.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:{{ sandoreSlide0Display }};"></video>
-                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/sandolore-2.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:{{ sandoreSlide1Display }};"></video>
-                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/sandolore-3.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:{{ sandoreSlide2Display }};"></video>
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/websites-i-built/sandolore/sandolore.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></video>
               </div>
               <canvas id="cvTV" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
               <div style="position:absolute;top:10px;right:12px;font-size:10px;letter-spacing:0.18em;color:#ffce5c;background:rgba(0,0,0,.4);padding:3px 7px;border-radius:3px;z-index:2;">CH {{ chNum }}</div>
@@ -240,7 +238,7 @@ class Component extends DCLogic {
     this.CH = [
       { n: '01', name: 'ROSE BERTRAND', tag: 'Works · visual portfolio', url: 'www.rosebertrand.com', href: 'https://www.rosebertrand.com', slides: 1 },
       { n: '02', name: 'IN-MOTION ART', tag: 'Animated art experiment', url: 'laurerunser.github.io/in-motion-art', href: 'https://laurerunser.github.io/in-motion-art/', slides: 1 },
-      { n: '03', name: 'SANDOLORE', tag: 'Author site · Sandolore Sykes', url: 'laurerunser.github.io/author-website-sandolore', href: 'https://laurerunser.github.io/author-website-sandolore/', slides: 3 }
+      { n: '03', name: 'SANDOLORE', tag: 'Author site · Sandolore Sykes', url: 'laurerunser.github.io/author-website-sandolore', href: 'https://laurerunser.github.io/author-website-sandolore/', slides: 1 }
     ];
     let anim = true;
     try { const v = localStorage.getItem('laure.anim'); if (v === '0') anim = false; } catch (e) {}
