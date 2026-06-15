@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laure Runser — software engineer</title>
+<meta name="description" content="Laure Runser — software engineer at Datadog. Personal site: about, CV, projects, and websites I've built.">
+<meta name="author" content="Laure Runser">
+<meta name="theme-color" content="#080603">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:title" content="Laure Runser — software engineer">
+<meta property="og:description" content="Software engineer at Datadog. About, CV, projects, and websites I've built.">
+<meta property="og:type" content="website">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #080603; }
+  @keyframes scanbar { 0% { transform: translateY(-12%); } 100% { transform: translateY(102vh); } }
+  @keyframes flicker { 0%,100%{opacity:.97} 6%{opacity:.86} 9%{opacity:.99} 41%{opacity:.92} 44%{opacity:1} 72%{opacity:.88} }
+  @keyframes blink { 0%,48%{opacity:1} 49%,100%{opacity:0} }
+  @keyframes sigarc { 0%{opacity:0;transform:translateX(-50%) scale(.4)} 50%{opacity:.8} 100%{opacity:0;transform:translateX(-50%) scale(1.6)} }
+  @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  [data-anim="0"] *, [data-anim="0"] *::before, [data-anim="0"] *::after { animation: none !important; }
+</style>
+</helmet>
+
+<div id="root" data-anim="{{ animFlag }}" style="position:relative;width:100%;min-height:100vh;overflow:hidden;background:#080603;font-family:'IBM Plex Mono',ui-monospace,monospace;color:#e9e3d4;">
+
+  <!-- ============ NAV ============ -->
+  <header style="position:absolute;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:22px 5vw;pointer-events:none;">
+    <a onClick="{{ goHome }}" style="pointer-events:auto;cursor:pointer;font-size:13px;letter-spacing:0.22em;color:{{ colHome }};text-decoration:none;font-weight:600;" style-hover="color:#ffce5c">◢ LAURE.SYS</a>
+    <nav style="pointer-events:auto;display:flex;gap:22px;font-size:11.5px;letter-spacing:0.2em;">
+      <a onClick="{{ goHome }}" style="cursor:pointer;color:{{ colHome }};text-decoration:none;" style-hover="color:#ffce5c">ABOUT</a>
+      <a onClick="{{ goCV }}" style="cursor:pointer;color:{{ colCV }};text-decoration:none;" style-hover="color:#ffce5c">CV</a>
+      <a onClick="{{ goWork }}" style="cursor:pointer;color:{{ colWork }};text-decoration:none;" style-hover="color:#ffce5c">PERSONAL_PROJECTS</a>
+      <a onClick="{{ goWeb }}" style="cursor:pointer;color:{{ colWeb }};text-decoration:none;" style-hover="color:#ffce5c">WEBSITES_I_MADE</a>
+      <a onClick="{{ goContact }}" style="cursor:pointer;color:{{ colContact }};text-decoration:none;" style-hover="color:#ffce5c">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- ============ PAGE: HOME / ABOUT ============ -->
+  <section style="display:{{ dHome }};position:absolute;inset:0;">
+    <canvas id="cvHome" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 5vw;pointer-events:none;">
+      <div style="font-size:12px;letter-spacing:0.28em;color:#c8780a;margin-bottom:14px;">▶ NOW BROADCASTING</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:clamp(54px,9.6vw,156px);line-height:0.86;letter-spacing:-0.04em;color:#ffce5c;text-shadow:0 0 30px rgba(255,176,0,.4);white-space:nowrap;">LAURE RUNSER</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(14px,1.55vw,21px);letter-spacing:0.1em;color:#e9e3d4;margin-top:16px;">SOFTWARE ENGINEER · BUILDING SECURITY PRODUCTS @ DATADOG</div>
+      <div id="homeBoot" style="margin-top:26px;font-size:13.5px;line-height:1.85;color:#b9b09a;min-height:182px;max-width:680px;"></div>
+    </div>
+    <a href="https://github.com/laurerunser" target="_blank" rel="noopener" style="position:absolute;right:5vw;bottom:30px;pointer-events:auto;display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;letter-spacing:0.16em;color:#ffb000;border:1px solid rgba(255,176,0,.4);padding:11px 16px;border-radius:6px;background:rgba(255,176,0,.05);z-index:55;" style-hover="background:rgba(255,176,0,.14);color:#ffce5c">
+      <span style="width:8px;height:8px;border-radius:50%;background:#ffb000;box-shadow:0 0 8px #ffb000;"></span>GITHUB / LAURERUNSER ↗
+    </a>
+  </section>
+
+  <!-- ============ PAGE: WORK (empty / stand by) ============ -->
+  <section style="display:{{ dWork }};position:absolute;inset:0;">
+    <canvas id="cvWork" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;text-align:center;">
+      <div style="font-size:12px;letter-spacing:0.34em;color:#c8780a;margin-bottom:18px;">▤ NO SIGNAL</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:clamp(40px,7.5vw,110px);line-height:0.92;letter-spacing:-0.03em;color:#ffce5c;text-shadow:0 0 30px rgba(255,176,0,.35);">PERSONAL<br/>PROJECTS</div>
+      <div style="font-size:13px;letter-spacing:0.18em;color:#a89f8c;margin-top:22px;max-width:440px;line-height:1.7;">// transmission scheduled — a feed of things I've built is being tuned in. Check back soon.</div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE: WEBSITES I BUILT (TV + REMOTE) ============ -->
+  <section style="display:{{ dWeb }};position:absolute;inset:0;">
+    <canvas id="cvWebBg" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+
+    <div style="position:absolute;left:0;right:0;top:11vh;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;z-index:5;">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:clamp(34px,4.4vw,60px);letter-spacing:-0.02em;line-height:1;color:#ffce5c;text-shadow:0 0 24px rgba(255,176,0,.35);">WEBSITES I BUILT</div>
+      <a onClick="{{ goContact }}" style="pointer-events:auto;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#c8780a;text-decoration:none;" style-hover="color:#ffce5c">get in touch ↗</a>
+      <div style="margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#8a6a38;line-height:1.6;text-align:center;">// TURN THE DIAL — EACH CHANNEL IS A SITE I'VE BUILT.</div>
+    </div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:38px;padding-top:110px;">
+      <!-- TV UNIT -->
+      <div style="position:relative;margin-top:70px;">
+        <div style="position:absolute;left:50%;top:-58px;transform:translateX(-50%);width:160px;height:60px;">
+          <div style="position:absolute;left:50%;bottom:0;width:2px;height:14px;background:#3a2f1c;transform:translateX(-50%);"></div>
+          <div style="position:absolute;left:42px;bottom:6px;width:90px;height:2px;background:linear-gradient(90deg,transparent,#6a5430,transparent);transform:rotate(-26deg);transform-origin:left center;"></div>
+          <div style="position:absolute;right:42px;bottom:6px;width:90px;height:2px;background:linear-gradient(90deg,transparent,#6a5430,transparent);transform:rotate(26deg);transform-origin:right center;"></div>
+          <div style="position:absolute;left:50%;top:-2px;width:40px;height:40px;border:1.5px solid rgba(255,176,0,.5);border-radius:50%;animation:sigarc 2.6s ease-out infinite;"></div>
+          <div style="position:absolute;left:50%;top:-2px;width:40px;height:40px;border:1.5px solid rgba(255,176,0,.5);border-radius:50%;animation:sigarc 2.6s ease-out infinite 1.3s;"></div>
+        </div>
+        <div style="display:flex;gap:20px;width:580px;padding:24px;border-radius:24px;background:linear-gradient(158deg,#322619 0%,#211810 55%,#140e08 100%);box-shadow:0 40px 90px rgba(0,0,0,.6),inset 0 2px 0 rgba(255,200,120,.12),inset 0 -3px 8px rgba(0,0,0,.6);border:1px solid #3a2c1b;">
+          <div style="position:relative;flex:1;border-radius:14px;overflow:hidden;background:#050402;border:4px solid #0a0805;box-shadow:inset 0 0 50px rgba(0,0,0,.95),inset 0 0 0 2px rgba(255,176,0,.06);">
+            <div style="position:relative;width:100%;aspect-ratio:4/3;background:#0a0805;">
+              <div style="position:absolute;inset:0;display:{{ roseMediaDisplay }};background:#000;">
+                <img src="assets/rose-bertrand.jpg" alt="Rose Bertrand — homepage" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+              </div>
+              <div style="position:absolute;inset:0;display:{{ motionMediaDisplay }};background:#000;">
+                <img src="assets/motion-home.jpg" alt="In-Motion Art — home" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+              </div>
+              <div style="position:absolute;inset:0;display:{{ sandoreMediaDisplay }};background:#000;">
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/sandolore-1.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:{{ sandoreSlide0Display }};"></video>
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/sandolore-2.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:{{ sandoreSlide1Display }};"></video>
+                <video autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" src="assets/sandolore-3.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:{{ sandoreSlide2Display }};"></video>
+              </div>
+              <canvas id="cvTV" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+              <div style="position:absolute;top:10px;right:12px;font-size:10px;letter-spacing:0.18em;color:#ffce5c;background:rgba(0,0,0,.4);padding:3px 7px;border-radius:3px;z-index:2;">CH {{ chNum }}</div>
+            </div>
+          </div>
+          <div style="width:54px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:6px 0;">
+            <div style="width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#5a4628,#1c150c);box-shadow:inset 0 2px 4px rgba(255,200,120,.2),0 2px 4px rgba(0,0,0,.5);border:1px solid #4a3a22;"></div>
+            <div style="writing-mode:vertical-rl;font-size:9px;letter-spacing:0.3em;color:#8a6a38;font-weight:600;">LAURE-VISION</div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+              <div style="width:9px;height:9px;border-radius:50%;background:{{ pwrColor }};box-shadow:0 0 7px {{ pwrColor }};"></div>
+              <div style="font-size:8px;letter-spacing:0.1em;color:#6a5430;">PWR</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:0 70px;">
+          <div style="width:26px;height:18px;background:#1a130b;border-radius:0 0 6px 6px;"></div>
+          <div style="width:26px;height:18px;background:#1a130b;border-radius:0 0 6px 6px;"></div>
+        </div>
+      </div>
+
+      <!-- REMOTE -->
+      <div style="display:flex;flex-direction:column;gap:13px;align-items:center;width:132px;padding:16px 13px;border-radius:18px;background:linear-gradient(158deg,#221a11,#0d0a06);box-shadow:0 22px 50px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,200,120,.1);border:1px solid #2c2118;animation:floaty 7s ease-in-out infinite 0.6s;">
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+          <span style="font-size:8px;letter-spacing:0.16em;color:#6a5430;">RC-3000</span>
+          <button onClick="{{ togglePower }}" style="width:14px;height:14px;border-radius:50%;border:1px solid #4a3a22;background:{{ pwrColor }};box-shadow:0 0 7px {{ pwrColor }};cursor:pointer;padding:0;"></button>
+        </div>
+        <div style="width:100%;background:#0a0d08;border:1px solid #243018;border-radius:5px;padding:6px 8px;text-align:center;box-shadow:inset 0 0 14px rgba(0,0,0,.8);">
+          <div style="font-size:9px;letter-spacing:0.12em;color:#6a5430;">CHANNEL</div>
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:22px;color:{{ chDigitColor }};text-shadow:0 0 8px rgba(255,176,0,.5);">{{ chNum }}</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;width:100%;">
+          <button onClick="{{ setCh0 }}" style="aspect-ratio:1;border-radius:7px;border:1px solid #5a4424;background:linear-gradient(160deg,#3a2c16,#1c1409);color:#ffce5c;font-family:'Helvetica Neue',Arial;font-weight:700;font-size:15px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,200,120,.2);" style-hover="background:#4a3a1e">1</button>
+          <button onClick="{{ setCh1 }}" style="aspect-ratio:1;border-radius:7px;border:1px solid #5a4424;background:linear-gradient(160deg,#3a2c16,#1c1409);color:#ffce5c;font-family:'Helvetica Neue',Arial;font-weight:700;font-size:15px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,200,120,.2);" style-hover="background:#4a3a1e">2</button>
+          <button onClick="{{ setCh2 }}" style="aspect-ratio:1;border-radius:7px;border:1px solid #5a4424;background:linear-gradient(160deg,#3a2c16,#1c1409);color:#ffce5c;font-family:'Helvetica Neue',Arial;font-weight:700;font-size:15px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,200,120,.2);" style-hover="background:#4a3a1e">3</button>
+          <div style="aspect-ratio:1;border-radius:7px;border:1px solid #2c2118;background:#161009;color:#4a3a22;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Helvetica Neue',Arial;">4</div>
+          <div style="aspect-ratio:1;border-radius:7px;border:1px solid #2c2118;background:#161009;color:#4a3a22;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Helvetica Neue',Arial;">5</div>
+          <div style="aspect-ratio:1;border-radius:7px;border:1px solid #2c2118;background:#161009;color:#4a3a22;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Helvetica Neue',Arial;">6</div>
+          <div style="aspect-ratio:1;border-radius:7px;border:1px solid #2c2118;background:#161009;color:#4a3a22;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Helvetica Neue',Arial;">7</div>
+          <div style="aspect-ratio:1;border-radius:7px;border:1px solid #2c2118;background:#161009;color:#4a3a22;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Helvetica Neue',Arial;">8</div>
+          <div style="aspect-ratio:1;border-radius:7px;border:1px solid #2c2118;background:#161009;color:#4a3a22;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Helvetica Neue',Arial;">9</div>
+        </div>
+        <div style="font-size:8px;letter-spacing:0.14em;color:#8a6a38;text-align:center;line-height:1.5;">PRESS 1–3<br/>TO CHANGE CHANNELS</div>
+        <div style="display:flex;gap:8px;width:100%;">
+          <button onClick="{{ prevSlide }}" style="flex:1;border-radius:6px;border:1px solid #3a2c1b;background:#1c1409;color:#9c7a2a;cursor:pointer;font-size:13px;padding:6px 0;" style-hover="color:#ffce5c">◄</button>
+          <button onClick="{{ nextSlide }}" style="flex:1;border-radius:6px;border:1px solid #3a2c1b;background:#1c1409;color:#9c7a2a;cursor:pointer;font-size:13px;padding:6px 0;" style-hover="color:#ffce5c">►</button>
+        </div>
+        <div style="font-size:8px;letter-spacing:0.14em;color:#8a6a38;text-align:center;line-height:1.5;">CLICK ARROWS<br/>TO CHANGE SLIDES</div>
+      </div>
+
+      <!-- INFO PANEL (right column) -->
+      <div style="width:280px;display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Mono',monospace;">
+        <div style="font-size:11px;letter-spacing:0.24em;color:#c8780a;">▶ NOW PLAYING</div>
+        <div style="font-size:10px;letter-spacing:0.2em;color:#9c7a2a;">CHANNEL {{ chNum }}</div>
+        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:32px;line-height:1.04;letter-spacing:-0.01em;color:#ffce5c;text-shadow:0 0 18px rgba(255,176,0,.3);">{{ chName }}</div>
+        <div style="height:1px;background:rgba(255,176,0,.18);"></div>
+        <div style="font-size:12.5px;line-height:1.65;color:#a89f8c;">{{ curTag }}</div>
+        <a href="{{ curHref }}" target="_blank" rel="noopener" style="text-decoration:none;font-size:12px;letter-spacing:0.1em;color:#ffb000;border:1px solid rgba(255,176,0,.4);padding:11px 14px;border-radius:6px;background:rgba(255,176,0,.05);display:inline-flex;align-items:center;gap:9px;align-self:flex-start;" style-hover="background:rgba(255,176,0,.14);color:#ffce5c">
+          <span style="width:7px;height:7px;border-radius:50%;background:#ffb000;box-shadow:0 0 7px #ffb000;"></span>
+          {{ curUrl }} ↗
+        </a>
+      </div>
+    </div>
+
+
+  </section>
+
+  <!-- ============ PAGE: CV ============ -->
+  <section style="display:{{ dCV }};position:absolute;inset:0;">
+    <canvas id="cvCV" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 5vw;pointer-events:none;">
+      <div style="font-size:12px;letter-spacing:0.28em;color:#c8780a;margin-bottom:14px;">▶ TRANSMISSION HISTORY</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:clamp(64px,11vw,168px);line-height:0.86;letter-spacing:-0.04em;color:#ffce5c;text-shadow:0 0 30px rgba(255,176,0,.4);">CV</div>
+      <div style="margin-top:30px;display:flex;gap:42px;flex-wrap:wrap;font-size:12.5px;line-height:1.75;color:#b9b09a;max-width:1180px;min-height:300px;">
+        <div style="flex:1;min-width:340px;max-width:580px;">
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.26em;color:#e9e3d4;margin-bottom:14px;">CAREER LOG</div>
+          <div id="cvBootLeft" style="white-space:pre;overflow-x:auto;"></div>
+        </div>
+        <div style="flex:1;min-width:340px;max-width:580px;">
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.26em;color:#e9e3d4;margin-bottom:14px;">EDUCATION LOG</div>
+          <div id="cvBootRight" style="white-space:pre;overflow-x:auto;"></div>
+        </div>
+      </div>
+    </div>
+    <a href="https://github.com/laurerunser" target="_blank" rel="noopener" style="position:absolute;right:5vw;top:50%;transform:translateY(-180px);pointer-events:auto;display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;letter-spacing:0.16em;color:#ffb000;border:1px solid rgba(255,176,0,.4);padding:11px 16px;border-radius:6px;background:rgba(255,176,0,.05);z-index:55;" style-hover="background:rgba(255,176,0,.14);color:#ffce5c">
+      <span style="width:8px;height:8px;border-radius:50%;background:#ffb000;box-shadow:0 0 8px #ffb000;"></span>GITHUB / LAURERUNSER ↗
+    </a>
+  </section>
+
+  <!-- ============ PAGE: CONTACT ============ -->
+  <section style="display:{{ dContact }};position:absolute;inset:0;">
+    <canvas id="cvContact" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 5vw;pointer-events:none;">
+      <div style="width:100%;max-width:620px;pointer-events:auto;">
+        <div style="font-size:12px;letter-spacing:0.28em;color:#c8780a;margin-bottom:14px;">▶ INCOMING TRANSMISSION</div>
+        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:clamp(48px,7vw,92px);line-height:0.88;letter-spacing:-0.03em;color:#ffce5c;text-shadow:0 0 28px rgba(255,176,0,.35);">GET IN TOUCH</div>
+        <div style="font-size:12px;letter-spacing:0.06em;color:#8a8273;margin-top:14px;">// move your cursor — the horizon follows</div>
+        <div style="margin-top:30px;border-top:1px solid rgba(255,176,0,.18);">
+          <a href="https://github.com/laurerunser" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:18px 4px;border-bottom:1px solid rgba(255,176,0,.18);text-decoration:none;color:#e9e3d4;" style-hover="color:#ffce5c">
+            <span style="font-size:11px;letter-spacing:0.24em;color:#9c7a2a;">GITHUB</span>
+            <span style="font-size:15px;letter-spacing:0.04em;">github.com/laurerunser ↗</span>
+          </a>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:18px 4px;border-bottom:1px solid rgba(255,176,0,.18);gap:24px;">
+            <span style="font-size:11px;letter-spacing:0.24em;color:#9c7a2a;padding-top:3px;">EMAIL</span>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+              <span style="font-size:15px;letter-spacing:0.04em;font-family:'IBM Plex Mono',monospace;">xlaure-runser@tutanota.com</span>
+              <span style="font-size:10.5px;letter-spacing:0.12em;color:#8a6a38;">// drop the first letter — proves you're human</span>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 4px;border-bottom:1px solid rgba(255,176,0,.18);">
+            <span style="font-size:11px;letter-spacing:0.24em;color:#9c7a2a;">LOCATION</span>
+            <span style="font-size:15px;letter-spacing:0.04em;">Paris, France</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GLOBAL CRT OVERLAYS ============ -->
+  <div style="position:absolute;inset:0;z-index:40;pointer-events:none;animation:flicker 7s infinite;background:repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px, rgba(0,0,0,0.16) 3px, rgba(0,0,0,0) 4px);"></div>
+  <div style="display:{{ dSweep }};position:absolute;left:0;right:0;top:0;height:14vh;z-index:41;pointer-events:none;background:linear-gradient(to bottom, rgba(255,176,0,0.07), transparent);animation:scanbar 5s linear infinite;"></div>
+  <div style="position:absolute;inset:0;z-index:42;pointer-events:none;background:radial-gradient(circle at 50% 50%, transparent 58%, rgba(0,0,0,0.5) 100%);"></div>
+
+  <!-- ============ ANIMATION TOGGLE (bottom-left, global) ============ -->
+  <button onClick="{{ toggleAnim }}" style="position:absolute;left:5vw;bottom:30px;z-index:65;display:flex;align-items:center;gap:11px;background:rgba(8,6,3,0.7);border:1px solid rgba(255,176,0,.3);border-radius:6px;padding:9px 13px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#9c7a2a;" style-hover="border-color:rgba(255,176,0,.6);color:#ffce5c">
+    <span style="position:relative;display:inline-block;width:30px;height:14px;border-radius:8px;background:{{ toggleTrack }};transition:background .18s;">
+      <span style="position:absolute;top:1px;left:{{ toggleX }};width:12px;height:12px;border-radius:50%;background:{{ toggleKnob }};box-shadow:0 0 6px {{ toggleKnob }};transition:left .18s;"></span>
+    </span>
+    <span>ANIMATION&nbsp;:&nbsp;<span style="color:{{ toggleLabelColor }};">{{ toggleLabel }}</span></span>
+  </button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.CH = [
+      { n: '01', name: 'ROSE BERTRAND', tag: 'Works · visual portfolio', url: 'www.rosebertrand.com', href: 'https://www.rosebertrand.com', slides: 1 },
+      { n: '02', name: 'IN-MOTION ART', tag: 'Animated art experiment', url: 'laurerunser.github.io/in-motion-art', href: 'https://laurerunser.github.io/in-motion-art/', slides: 1 },
+      { n: '03', name: 'SANDOLORE', tag: 'Author site · Sandolore Sykes', url: 'laurerunser.github.io/author-website-sandolore', href: 'https://laurerunser.github.io/author-website-sandolore/', slides: 3 }
+    ];
+    let anim = true;
+    try { const v = localStorage.getItem('laure.anim'); if (v === '0') anim = false; } catch (e) {}
+    this.state = { page: 'home', channel: 0, slide: 0, power: true, anim };
+    this.gx = 0; this.gy = 0;
+  }
+
+  componentDidMount() {
+    this._raf = {}; this._timers = []; this._t = 0; this.tvStatic = 0;
+    const valid = ['home', 'work', 'websites', 'contact', 'cv'];
+    const h = (location.hash || '').replace('#', '');
+    const p = valid.includes(h) ? h : 'home';
+    this._onHash = () => { const hh = (location.hash || '').replace('#', ''); if (valid.includes(hh) && hh !== this.state.page) this.setState({ page: hh }); };
+    window.addEventListener('hashchange', this._onHash);
+    this._onResize = () => { clearTimeout(this._rz); this._rz = setTimeout(() => { this.stopAll(); this.startPage(this.state.page); }, 160); };
+    window.addEventListener('resize', this._onResize);
+    this._onMouse = (e) => {
+      const root = document.getElementById('root'); if (!root) return;
+      const r = root.getBoundingClientRect();
+      this.gx = (e.clientX - r.left) / r.width - 0.5;
+      this.gy = (e.clientY - r.top) / r.height - 0.5;
+    };
+    window.addEventListener('mousemove', this._onMouse);
+    if (p !== this.state.page) this.setState({ page: p }); else this.startPage(p);
+  }
+  componentDidUpdate(pp, ps) {
+    ps = ps || {};
+    if (ps.page !== this.state.page) {
+      this.stopAll(); this.startPage(this.state.page);
+      try { history.replaceState(null, '', '#' + this.state.page); } catch (e) {}
+    } else if (this.state.page === 'websites') {
+      if (ps.channel !== this.state.channel) this.tvStatic = 0.42;
+      else if (ps.slide !== this.state.slide) this.tvStatic = 0.22;
+    }
+    if (ps.anim !== this.state.anim) {
+      try { localStorage.setItem('laure.anim', this.state.anim ? '1' : '0'); } catch (e) {}
+      this.stopAll(); this.startPage(this.state.page);
+    }
+  }
+  componentWillUnmount() {
+    this.stopAll();
+    window.removeEventListener('hashchange', this._onHash);
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('mousemove', this._onMouse);
+  }
+  stopAll() {
+    Object.values(this._raf || {}).forEach(id => cancelAnimationFrame(id));
+    this._raf = {};
+    (this._timers || []).forEach(t => clearTimeout(t)); this._timers = [];
+    clearInterval(this._slideInt); this._slideInt = null;
+  }
+  startPage(p) {
+    if (p === 'home') {
+      this.initScope();
+      if (this.state.anim) this.initBoot(); else this.fillBootInstant();
+    } else if (p === 'work') {
+      this.initNoise('cvWork');
+    } else if (p === 'websites') {
+      this.initWebBg(); this.initTV();
+      if (this.state.anim) {
+        this._slideInt = setInterval(() => {
+          if (this.state.page !== 'websites' || !this.state.power) return;
+          const slides = this.CH[this.state.channel].slides;
+          if (slides > 1) this.setState(s => ({ slide: (s.slide + 1) % slides }));
+        }, 3200);
+      }
+    } else if (p === 'cv') {
+      this.initCvBg();
+      if (this.state.anim) this.initCvBoot(); else this.fillCvBootInstant();
+    } else if (p === 'contact') {
+      this.initContactGrid();
+    }
+  }
+
+  setup(cvs) {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const r = cvs.getBoundingClientRect();
+    const w = r.width || 100, h = r.height || 100;
+    cvs.width = Math.round(w * dpr); cvs.height = Math.round(h * dpr);
+    const ctx = cvs.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { ctx, w, h };
+  }
+
+  initScope() {
+    const cvs = document.getElementById('cvHome'); if (!cvs) return;
+    const { ctx, w, h } = this.setup(cvs);
+    const amber = '#ffb000';
+    const drawGrid = () => {
+      ctx.fillStyle = '#080603'; ctx.fillRect(0, 0, w, h);
+      const stepX = w / 22, stepY = h / 12;
+      ctx.strokeStyle = 'rgba(255,176,0,0.07)'; ctx.lineWidth = 1;
+      for (let x = 0; x <= w + 1; x += stepX) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+      for (let y = 0; y <= h + 1; y += stepY) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+      ctx.strokeStyle = 'rgba(255,176,0,0.16)';
+      ctx.beginPath(); ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2); ctx.stroke();
+    };
+    // Main wave sits in the LOWER portion (under the boot log) and amplifies toward the right.
+    // A second "random-ish" jagged trace lives near the top across the full width.
+    const topY = h * 0.13;   // baseline for the top jagged trace
+    // text column ends around 60% of the viewport; right of that, the wave can grow + lift.
+    const textEdge = 0.58;
+    // smoothstep that's flat-low until ~textEdge then ramps up
+    const k = (x) => {
+      const u = Math.max(0, Math.min(1, (x / w - textEdge) / (1 - textEdge)));
+      return u * u * (3 - 2 * u);
+    };
+    // baseline lifts up off the floor as we go right (text-free zone)
+    const baselineAtX = (x) => h * (0.84 - 0.34 * k(x));
+    // amplitude: small ripple under text (~4% h) → huge wave on the right (~26% h)
+    const ampAtX = (x) => h * (0.040 + 0.220 * k(x));
+    if (!this.state.anim) {
+      drawGrid();
+      ctx.shadowColor = amber; ctx.shadowBlur = 16; ctx.strokeStyle = amber; ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 2) { const y = baselineAtX(x) + Math.sin(x / w * Math.PI * 4) * ampAtX(x); if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+      ctx.stroke();
+      // top jagged (static seed)
+      ctx.shadowBlur = 8; ctx.strokeStyle = 'rgba(255,138,0,0.55)'; ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 6) { const y = topY + (Math.sin(x * 0.13) * 0.5 + Math.sin(x * 0.37) * 0.5) * h * 0.04; if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+      return;
+    }
+    let t = 0, last = performance.now();
+    const draw = (now) => {
+      const dt = Math.min((now - last) / 1000, 0.05); last = now; t += dt;
+      // persistence overlay (creates phosphor trails)
+      ctx.fillStyle = 'rgba(8,6,3,0.32)'; ctx.fillRect(0, 0, w, h);
+      // graticule
+      const stepX = w / 22, stepY = h / 12;
+      ctx.strokeStyle = 'rgba(255,176,0,0.07)'; ctx.lineWidth = 1;
+      for (let x = 0; x <= w + 1; x += stepX) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+      for (let y = 0; y <= h + 1; y += stepY) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+      ctx.strokeStyle = 'rgba(255,176,0,0.10)';
+      ctx.beginPath(); ctx.moveTo(0, topY); ctx.lineTo(w, topY); ctx.stroke();
+
+      // --- top: jagged random-ish trace, full width ---
+      ctx.shadowColor = amber; ctx.shadowBlur = 10; ctx.strokeStyle = 'rgba(255,138,0,0.7)'; ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 5) {
+        // sum of several sines with different freqs/phases — quasi-random
+        const j = (Math.sin(x * 0.07 + t * 3.1) * 0.45
+                 + Math.sin(x * 0.19 + t * 5.7 + 1.3) * 0.32
+                 + Math.sin(x * 0.41 + t * 8.9 + 2.7) * 0.20
+                 + Math.sin(x * 0.83 + t * 11.4) * 0.10);
+        const y = topY + j * h * 0.05;
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // --- bottom: main wave, grows to the right ---
+      ctx.shadowBlur = 16; ctx.strokeStyle = amber; ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 2) {
+        const ph = x / w * Math.PI * 4;
+        const env = 0.85 + 0.25 * Math.sin(t * 0.7 + x / w * 2.0);
+        const amp = ampAtX(x) * env;
+        const y = baselineAtX(x) + Math.sin(ph + t * 2.8) * amp + Math.sin(ph * 2.7 + t * 1.9) * amp * 0.28;
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // --- bottom dim secondary trace ---
+      ctx.shadowBlur = 9; ctx.strokeStyle = 'rgba(255,138,0,0.45)'; ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 3) {
+        const y = baselineAtX(x) + Math.sin(x / w * Math.PI * 7 - t * 2.0) * ampAtX(x) * 0.35;
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+      this._raf.home = requestAnimationFrame(draw);
+    };
+    this._raf.home = requestAnimationFrame(draw);
+  }
+
+  _bootLines() {
+    return [
+      '> initializing laure.sys .......... ok',
+      '> name .......... laure runser',
+      '> role .......... software engineer',
+      '> currently ..... building security products @ datadog',
+      '> first_love .... ocaml   // french university, naturellement',
+      '> fluent_in ..... go · java',
+      '> off_the_clock . sci-fi novels · cinema · scottish country dance',
+      '> status ........ online_'
+    ];
+  }
+  _linkifyScottish(div) {
+    div.innerHTML = '> off_the_clock . sci-fi novels · cinema · <a href="https://www.rscdsparis.fr/home/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(255,176,0,0.5);text-underline-offset:3px;" onmouseover="this.style.color=\'#ffce5c\'" onmouseout="this.style.color=\'inherit\'">scottish country dance ↗</a>';
+  }
+  fillBootInstant() {
+    const el = document.getElementById('homeBoot'); if (!el) return;
+    el.innerHTML = '';
+    this._bootLines().forEach((line, i, arr) => {
+      const div = document.createElement('div');
+      div.style.color = i === arr.length - 1 ? '#ffb000' : '#b9b09a';
+      div.textContent = line;
+      if (line.includes('scottish country dance')) this._linkifyScottish(div);
+      el.appendChild(div);
+    });
+  }
+  initBoot() {
+    const el = document.getElementById('homeBoot'); if (!el) return;
+    el.innerHTML = '';
+    const lines = this._bootLines();
+    let i = 0;
+    const addLine = () => {
+      if (i >= lines.length) return;
+      const div = document.createElement('div');
+      div.style.color = i === lines.length - 1 ? '#ffb000' : '#b9b09a';
+      const full = lines[i]; el.appendChild(div);
+      let j = 0;
+      const type = () => {
+        div.textContent = full.slice(0, j);
+        if (j === full.length) {
+          if (i === lines.length - 1) {
+            const c = document.createElement('span');
+            c.textContent = '█'; c.style.cssText = 'animation:blink 1s steps(1) infinite;color:#ffb000;margin-left:2px;';
+            div.appendChild(c);
+          } else if (full.includes('scottish country dance')) {
+            this._linkifyScottish(div);
+          }
+        }
+        j++;
+        if (j <= full.length) this._timers.push(setTimeout(type, 7 + Math.random() * 14));
+        else { i++; this._timers.push(setTimeout(addLine, 110)); }
+      };
+      type();
+    };
+    this._timers.push(setTimeout(addLine, 280));
+  }
+
+  _cvWorkLines() {
+    return [
+      '> career.log ........ retrieving',
+      '> ',
+      '> [oct 2024 — current]     software engineer @ datadog',
+      '> // building the cloud workload security product',
+      '> ',
+      '> [apr 2024 — sept 2024]   intern @ datadog',
+      '> ',
+      '> [june 2023 — sept 2023]  intern @ nomadic labs',
+      '> // improving the performance of parsers',
+      '> // for the tezos blockchain protocols'
+    ];
+  }
+  _cvRestLines() {
+    return [
+      '> education.log ..... retrieving',
+      '> ',
+      '> [2023 — 2024]   master\u2019s degree @ université paris cité',
+      '> // compilation, formal verification and algorithms',
+      '> ',
+      '> [2019 — 2022]   undergraduate @ université paris cité',
+      '> ',
+      '## STATUS',
+      '> open to opportunities',
+      '> open to freelance work',
+      '> '
+    ];
+  }
+  _cvStyleDiv(div, raw, isLast) {
+    if (raw.startsWith('## ')) {
+      div.style.color = '#ffb000';
+      div.style.fontWeight = '600';
+      div.style.letterSpacing = '0.32em';
+      div.style.marginTop = '14px';
+      div.style.marginBottom = '4px';
+      div.style.fontSize = '11.5px';
+    } else if (isLast) {
+      div.style.color = '#ffb000';
+    } else if (raw.includes('open to')) {
+      div.style.color = '#ffb000';
+    } else if (raw.includes('//')) {
+      div.style.color = '#9c8a6a';
+    } else {
+      div.style.color = '#b9b09a';
+    }
+  }
+  _cvFillColumn(elId, lines, finalCursor) {
+    const el = document.getElementById(elId); if (!el) return;
+    el.innerHTML = '';
+    lines.forEach((line, i) => {
+      const div = document.createElement('div');
+      const isLast = finalCursor && i === lines.length - 1;
+      this._cvStyleDiv(div, line, isLast);
+      div.textContent = line.startsWith('## ') ? line.slice(3) : line;
+      if (isLast) {
+        const c = document.createElement('span');
+        c.textContent = '█';
+        c.style.cssText = 'animation:blink 1s steps(1) infinite;color:#ffb000;margin-left:2px;';
+        div.appendChild(c);
+      }
+      el.appendChild(div);
+    });
+  }
+  fillCvBootInstant() {
+    this._cvFillColumn('cvBootLeft', this._cvWorkLines(), false);
+    this._cvFillColumn('cvBootRight', this._cvRestLines(), true);
+  }
+  _cvTypeColumn(elId, lines, finalCursor, startDelay) {
+    const el = document.getElementById(elId); if (!el) return;
+    el.innerHTML = '';
+    let i = 0;
+    const addLine = () => {
+      if (i >= lines.length) return;
+      const raw = lines[i];
+      const div = document.createElement('div');
+      const isLast = finalCursor && i === lines.length - 1;
+      this._cvStyleDiv(div, raw, isLast);
+      const full = raw.startsWith('## ') ? raw.slice(3) : raw;
+      el.appendChild(div);
+      let j = 0;
+      const type = () => {
+        div.textContent = full.slice(0, j);
+        if (j === full.length && isLast) {
+          const c = document.createElement('span');
+          c.textContent = '█';
+          c.style.cssText = 'animation:blink 1s steps(1) infinite;color:#ffb000;margin-left:2px;';
+          div.appendChild(c);
+        }
+        j++;
+        if (j <= full.length) this._timers.push(setTimeout(type, 5 + Math.random() * 10));
+        else { i++; this._timers.push(setTimeout(addLine, 60)); }
+      };
+      type();
+    };
+    this._timers.push(setTimeout(addLine, startDelay));
+  }
+  initCvBoot() {
+    // Both columns start typing at the same time.
+    this._cvTypeColumn('cvBootLeft',  this._cvWorkLines(), false, 200);
+    this._cvTypeColumn('cvBootRight', this._cvRestLines(), true,  200);
+  }
+  initCvBg() {
+    const cvs = document.getElementById('cvCV'); if (!cvs) return;
+    const { ctx, w, h } = this.setup(cvs);
+    const amber = '#ffb000';
+    const drawGrid = () => {
+      ctx.fillStyle = '#080603'; ctx.fillRect(0, 0, w, h);
+      const stepX = w / 22, stepY = h / 12;
+      ctx.strokeStyle = 'rgba(255,176,0,0.06)'; ctx.lineWidth = 1;
+      for (let x = 0; x <= w + 1; x += stepX) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+      for (let y = 0; y <= h + 1; y += stepY) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+    };
+    if (!this.state.anim) {
+      drawGrid();
+      ctx.shadowColor = amber; ctx.shadowBlur = 10; ctx.strokeStyle = 'rgba(255,176,0,0.5)'; ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 4) { const y = h * 0.92 + Math.sin(x / w * Math.PI * 6) * h * 0.022; if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+      ctx.stroke(); ctx.shadowBlur = 0;
+      return;
+    }
+    let t = 0, last = performance.now();
+    const draw = (now) => {
+      const dt = Math.min((now - last) / 1000, 0.05); last = now; t += dt;
+      ctx.fillStyle = 'rgba(8,6,3,0.35)'; ctx.fillRect(0, 0, w, h);
+      const stepX = w / 22, stepY = h / 12;
+      ctx.strokeStyle = 'rgba(255,176,0,0.06)'; ctx.lineWidth = 1;
+      for (let x = 0; x <= w + 1; x += stepX) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+      for (let y = 0; y <= h + 1; y += stepY) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+      // slow scrolling sine at bottom
+      ctx.shadowColor = amber; ctx.shadowBlur = 12; ctx.strokeStyle = amber; ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 3) { const y = h * 0.92 + Math.sin(x / w * Math.PI * 6 + t * 1.0) * h * 0.025; if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+      ctx.stroke();
+      // dim high-frequency trace near top
+      ctx.shadowBlur = 7; ctx.strokeStyle = 'rgba(255,138,0,0.4)'; ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 4) { const y = h * 0.08 + Math.sin(x / w * Math.PI * 9 - t * 1.6) * h * 0.018; if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+      this._raf.cv = requestAnimationFrame(draw);
+    };
+    this._raf.cv = requestAnimationFrame(draw);
+  }
+
+  initNoise(id) {
+    const cvs = document.getElementById(id); if (!cvs) return;
+    const { ctx, w, h } = this.setup(cvs);
+    const oneFrame = (t) => {
+      ctx.fillStyle = '#0a0805'; ctx.fillRect(0, 0, w, h);
+      for (let k = 0; k < 1400; k++) {
+        const x = Math.random() * w, y = Math.random() * h, a = Math.random() * 0.32;
+        ctx.fillStyle = `rgba(255,200,120,${a})`; ctx.fillRect(x, y, 2, 2);
+      }
+      if (t != null) { const by = (t * 220) % h; ctx.fillStyle = 'rgba(255,176,0,0.06)'; ctx.fillRect(0, by, w, 26); }
+      ctx.fillStyle = 'rgba(0,0,0,0.18)';
+      for (let y = 0; y < h; y += 3) ctx.fillRect(0, y, w, 1);
+    };
+    if (!this.state.anim) { oneFrame(null); return; }
+    let last = performance.now(), t = 0;
+    const draw = (now) => { const dt = (now - last) / 1000; last = now; t += dt; oneFrame(t); this._raf.noise = requestAnimationFrame(draw); };
+    this._raf.noise = requestAnimationFrame(draw);
+  }
+
+  initWebBg() {
+    const cvs = document.getElementById('cvWebBg'); if (!cvs) return;
+    const { ctx, w, h } = this.setup(cvs);
+    const drawStatic = () => {
+      ctx.clearRect(0, 0, w, h);
+      const g = ctx.createRadialGradient(w / 2, h * 0.45, 40, w / 2, h * 0.45, Math.max(w, h) * 0.6);
+      g.addColorStop(0, 'rgba(255,176,0,0.05)'); g.addColorStop(1, 'transparent');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+      ctx.strokeStyle = 'rgba(255,138,0,0.16)'; ctx.lineWidth = 1.2;
+      [0.16, 0.86].forEach((fy) => {
+        ctx.beginPath();
+        for (let x = 0; x <= w; x += 4) { const y = h * fy + Math.sin(x * 0.012) * 16; if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+        ctx.stroke();
+      });
+    };
+    if (!this.state.anim) { drawStatic(); return; }
+    const stars = Array.from({ length: 70 }, () => ({ x: Math.random() * w, y: Math.random() * h, z: Math.random(), s: 0.3 + Math.random() }));
+    let last = performance.now(), t = 0;
+    const draw = (now) => {
+      const dt = (now - last) / 1000; last = now; t += dt;
+      ctx.clearRect(0, 0, w, h);
+      const g = ctx.createRadialGradient(w / 2, h * 0.45, 40, w / 2, h * 0.45, Math.max(w, h) * 0.6);
+      g.addColorStop(0, 'rgba(255,176,0,0.05)'); g.addColorStop(1, 'transparent');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+      for (let r = 0; r < 3; r++) {
+        const rad = ((t * 40 + r * 130) % 400) + 60;
+        ctx.strokeStyle = `rgba(255,176,0,${0.10 * (1 - rad / 460)})`; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(w / 2, h * 0.45, rad, 0, 7); ctx.stroke();
+      }
+      stars.forEach(s => { s.y -= s.s * 12 * dt; if (s.y < 0) { s.y = h; s.x = Math.random() * w; } ctx.fillStyle = `rgba(255,206,92,${0.2 + s.z * 0.5})`; ctx.fillRect(s.x, s.y, s.z * 1.8 + 0.4, s.z * 1.8 + 0.4); });
+      ctx.strokeStyle = 'rgba(255,138,0,0.18)'; ctx.lineWidth = 1.2;
+      [0.16, 0.86].forEach((fy, idx) => {
+        ctx.beginPath();
+        for (let x = 0; x <= w; x += 4) { const y = h * fy + Math.sin(x * 0.012 + t * (idx ? -1.4 : 1.4)) * 16; if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+        ctx.stroke();
+      });
+      this._raf.webbg = requestAnimationFrame(draw);
+    };
+    this._raf.webbg = requestAnimationFrame(draw);
+  }
+
+  initTV() {
+    const cvs = document.getElementById('cvTV'); if (!cvs) return;
+    const { ctx, w, h } = this.setup(cvs);
+    const drawOnce = () => {
+      if (this.state.power) { ctx.clearRect(0, 0, w, h); }
+      else {
+        ctx.fillStyle = '#050402'; ctx.fillRect(0, 0, w, h);
+        ctx.fillStyle = 'rgba(255,90,60,0.8)'; ctx.beginPath(); ctx.arc(w / 2, h / 2, 2.5, 0, 7); ctx.fill();
+      }
+      this.drawCRT(ctx, w, h);
+    };
+    if (!this.state.anim) { drawOnce(); return; }
+    let last = performance.now();
+    const draw = (now) => {
+      const dt = Math.min((now - last) / 1000, 0.05); last = now; this._t += dt;
+      const ch = this.state.channel;
+      const showMedia = this.state.power && this.tvStatic <= 0;
+      if (showMedia) { ctx.clearRect(0, 0, w, h); }
+      else { ctx.fillStyle = '#0a0805'; ctx.fillRect(0, 0, w, h); }
+      if (!this.state.power) {
+        ctx.fillStyle = '#050402'; ctx.fillRect(0, 0, w, h);
+        ctx.fillStyle = 'rgba(255,90,60,0.8)'; ctx.beginPath(); ctx.arc(w / 2, h / 2, 2.5, 0, 7); ctx.fill();
+        this.drawCRT(ctx, w, h); this._raf.tv = requestAnimationFrame(draw); return;
+      }
+      if (this.tvStatic > 0) { this.tvStatic -= dt; this.drawStatic(ctx, w, h); }
+      else {
+        /* all channels render media behind the canvas — canvas only carries the CRT overlay */
+      }
+      this.drawCRT(ctx, w, h);
+      this._raf.tv = requestAnimationFrame(draw);
+    };
+    this._raf.tv = requestAnimationFrame(draw);
+  }
+  drawStatic(ctx, w, h) {
+    for (let k = 0; k < 900; k++) { ctx.fillStyle = `rgba(255,200,120,${Math.random() * 0.45})`; ctx.fillRect(Math.random() * w, Math.random() * h, 2, 2); }
+    const by = (this._t * 280) % h; ctx.fillStyle = 'rgba(255,176,0,0.1)'; ctx.fillRect(0, by, w, 14);
+  }
+  drawCRT(ctx, w, h) {
+    ctx.fillStyle = 'rgba(0,0,0,0.14)';
+    for (let y = 0; y < h; y += 3) ctx.fillRect(0, y, w, 1);
+    if (this.state.anim) {
+      const ry = ((this._t * 0.13) % 1) * h;
+      const g = ctx.createLinearGradient(0, ry - 26, 0, ry + 26);
+      g.addColorStop(0, 'transparent'); g.addColorStop(0.5, 'rgba(255,206,92,0.06)'); g.addColorStop(1, 'transparent');
+      ctx.fillStyle = g; ctx.fillRect(0, ry - 26, w, 52);
+    }
+    const v = ctx.createRadialGradient(w / 2, h / 2, h * 0.25, w / 2, h / 2, h * 0.78);
+    v.addColorStop(0, 'transparent'); v.addColorStop(1, 'rgba(0,0,0,0.5)');
+    ctx.fillStyle = v; ctx.fillRect(0, 0, w, h);
+  }
+  hatch(ctx, x, y, ww, hh) {
+    ctx.save(); ctx.beginPath(); ctx.rect(x, y, ww, hh); ctx.clip();
+    ctx.fillStyle = 'rgba(255,176,0,0.06)'; ctx.fillRect(x, y, ww, hh);
+    ctx.strokeStyle = 'rgba(255,176,0,0.28)'; ctx.lineWidth = 1;
+    for (let i = -hh; i < ww; i += 7) { ctx.beginPath(); ctx.moveTo(x + i, y + hh); ctx.lineTo(x + i + hh, y); ctx.stroke(); }
+    ctx.restore();
+    ctx.strokeStyle = 'rgba(255,176,0,0.45)'; ctx.lineWidth = 1; ctx.strokeRect(x, y, ww, hh);
+  }
+  drawRose(ctx, w, h, sl, t) {
+    // parchment background
+    ctx.fillStyle = '#ebe6c8'; ctx.fillRect(0, 0, w, h);
+    // very faint paper grain
+    ctx.fillStyle = 'rgba(120,90,50,0.05)';
+    for (let i = 0; i < 240; i++) ctx.fillRect((i * 73.1) % w, (i * 131.7) % h, 1, 1);
+
+    // green decorative side bands (orrery / leg motifs from the real site)
+    const bandW = w * 0.045;
+    ctx.fillStyle = '#3f5a3a';
+    ctx.fillRect(0, 0, bandW, h);
+    ctx.fillRect(w - bandW, 0, bandW, h);
+    // dashed inner outlines on the bands
+    ctx.strokeStyle = '#ebe6c8'; ctx.lineWidth = 0.8;
+    if (ctx.setLineDash) ctx.setLineDash([3, 2.5]);
+    ctx.beginPath(); ctx.moveTo(bandW * 0.45, h * 0.04); ctx.lineTo(bandW * 0.45, h * 0.96); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(w - bandW * 0.45, h * 0.04); ctx.lineTo(w - bandW * 0.45, h * 0.96); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+    // little glyphs in the bands (suggest the orrery + colossus from the real site)
+    ctx.fillStyle = '#ebe6c8';
+    // left band: chevrons + bolts
+    ctx.beginPath();
+    ctx.moveTo(bandW * 0.25, h * 0.20); ctx.lineTo(bandW * 0.50, h * 0.23); ctx.lineTo(bandW * 0.75, h * 0.20);
+    ctx.lineTo(bandW * 0.75, h * 0.22); ctx.lineTo(bandW * 0.50, h * 0.25); ctx.lineTo(bandW * 0.25, h * 0.22);
+    ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.arc(bandW * 0.5, h * 0.45, 2, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.arc(bandW * 0.5, h * 0.70, 2, 0, 7); ctx.fill();
+    // right band: tiny "planets"
+    [0.18, 0.32, 0.55, 0.72, 0.86].forEach((p, i) => {
+      const r = 1.4 + (i % 2);
+      ctx.beginPath(); ctx.arc(w - bandW * 0.5, h * p, r, 0, 7); ctx.fill();
+    });
+
+    const padL = bandW + w * 0.04;
+    const padR = bandW + w * 0.04;
+    const contentW = w - padL - padR;
+    ctx.textBaseline = 'alphabetic';
+
+    // --- TITLE BLOCK (always shown across slides) ---
+    // green stamp top-left
+    const stampW = w * 0.095, stampH = h * 0.13;
+    const stampX = padL - 4, stampY = h * 0.04;
+    ctx.strokeStyle = '#3f5a3a'; ctx.lineWidth = 1.4;
+    ctx.strokeRect(stampX, stampY, stampW, stampH);
+    ctx.fillStyle = '#3f5a3a';
+    ctx.font = `700 ${w * 0.011}px 'IBM Plex Mono', monospace`;
+    ctx.fillText('NO. 2001', stampX + 4, stampY + h * 0.035);
+    ctx.fillText('PARIS · FR', stampX + 4, stampY + h * 0.063);
+    ctx.fillText('★ AUTHOR', stampX + 4, stampY + h * 0.091);
+
+    // big serif title
+    ctx.fillStyle = '#1a1a1a';
+    ctx.font = `700 ${w * 0.063}px Georgia, 'Times New Roman', serif`;
+    ctx.fillText('Rose Bertrand', stampX + stampW + 10, h * 0.13);
+    // subtitle (typewriter)
+    ctx.fillStyle = '#2c2218';
+    ctx.font = `${w * 0.020}px 'Courier New', monospace`;
+    ctx.fillText('Speculative fiction writer', stampX + stampW + 12, h * 0.20);
+    // tagline
+    ctx.fillStyle = '#5a4a32';
+    ctx.font = `${w * 0.017}px 'Courier New', monospace`;
+    ctx.fillText('A few notes on me — and the work.', stampX + stampW + 12, h * 0.255);
+
+    // small avatar circle top-right (placeholder portrait)
+    const avX = w - bandW - w * 0.07, avY = h * 0.14, avR = h * 0.10;
+    ctx.fillStyle = '#fffaeb';
+    ctx.beginPath(); ctx.arc(avX, avY, avR, 0, 7); ctx.fill();
+    ctx.strokeStyle = '#3a2e1f'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(avX, avY, avR, 0, 7); ctx.stroke();
+    // tiny silhouette
+    ctx.fillStyle = '#3f5a3a';
+    ctx.beginPath(); ctx.arc(avX, avY - avR * 0.25, avR * 0.32, 0, 7); ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(avX - avR * 0.55, avY + avR * 0.6);
+    ctx.lineTo(avX + avR * 0.55, avY + avR * 0.6);
+    ctx.lineTo(avX + avR * 0.40, avY - avR * 0.05);
+    ctx.lineTo(avX - avR * 0.40, avY - avR * 0.05);
+    ctx.closePath(); ctx.fill();
+
+    // helper to draw a "paper card with paperclip + green header + body lines"
+    const drawCard = (cx, cy, cw, ch, header, body) => {
+      // slight rotation for handmade feel
+      ctx.save();
+      // card shadow
+      ctx.fillStyle = 'rgba(60,40,20,0.18)';
+      ctx.fillRect(cx + 2, cy + 3, cw, ch);
+      ctx.fillStyle = '#fdf6df';
+      ctx.fillRect(cx, cy, cw, ch);
+      // paperclip
+      ctx.strokeStyle = '#6a6052'; ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      const clipX = cx + 14, clipY = cy - 2;
+      ctx.moveTo(clipX, clipY + 8);
+      ctx.lineTo(clipX, clipY - 6);
+      ctx.arc(clipX + 4, clipY - 6, 4, Math.PI, 0, false);
+      ctx.lineTo(clipX + 8, clipY + 4);
+      ctx.stroke();
+      // header
+      ctx.fillStyle = '#2c5e3a';
+      ctx.font = `italic 700 ${w * 0.022}px 'Courier New', monospace`;
+      ctx.fillText(header, cx + 12, cy + h * 0.055);
+      // body
+      ctx.fillStyle = '#3a2e1f';
+      ctx.font = `${w * 0.014}px 'Courier New', monospace`;
+      body.forEach((ln, i) => {
+        ctx.fillText(ln, cx + 12, cy + h * 0.10 + i * w * 0.020);
+      });
+      ctx.restore();
+    };
+
+    if (sl === 0) {
+      // big single card with the "dear reader" letter
+      const cx = padL, cy = h * 0.36, cw = contentW * 0.66, ch = h * 0.56;
+      drawCard(cx, cy, cw, ch, 'Dear reader,', [
+        'Welcome to my little corner of',
+        'the internet! I\u2019m thrilled to',
+        'have you here. This is my space',
+        'where I share my thoughts and',
+        'stories.',
+        '',
+        'Feel free to explore and enjoy!',
+        'Try to touch all the little things,',
+        'most of them move.',
+        '',
+        '                          \u2014 Rose'
+      ]);
+      // "about me" callout to the right
+      ctx.fillStyle = '#1a1a1a';
+      ctx.font = `${w * 0.018}px 'Courier New', monospace`;
+      ctx.fillText('[ about me ]', padL + cw + w * 0.04, cy + h * 0.06);
+      ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 1;
+      ctx.beginPath();
+      const lblY = cy + h * 0.08;
+      ctx.moveTo(padL + cw + w * 0.04, lblY); ctx.lineTo(padL + cw + w * 0.16, lblY);
+      ctx.stroke();
+      // little green blob
+      ctx.fillStyle = '#7ea05c';
+      ctx.beginPath(); ctx.arc(padL + cw + w * 0.10, cy + h * 0.18, 5, 0, 7); ctx.fill();
+    } else if (sl === 1) {
+      // three cards side by side
+      const gp = w * 0.018;
+      const cw = (contentW - 2 * gp) / 3;
+      const cy = h * 0.36, ch = h * 0.58;
+      drawCard(padL + 0 * (cw + gp), cy, cw, ch, 'Dear reader,', [
+        'Welcome to my', 'little corner of', 'the internet!', '', 'Feel free to', 'explore and enjoy.', '', '          \u2014 Rose'
+      ]);
+      drawCard(padL + 1 * (cw + gp), cy, cw, ch, 'On writing \u2014', [
+        'I love fiction and', 'I\u2019ve been an avid', 'reader since I was', 'a little girl.', '', 'I write speculative', 'fiction \u2014 identity,', 'technology, and the', 'human condition.'
+      ]);
+      drawCard(padL + 2 * (cw + gp), cy, cw, ch, 'On AI usage \u2014', [
+        'I do not use AI in', 'my creative practice,', 'at all.', '', 'No research, plot,', 'writing, or editing', 'with AI.', '', 'Made with my little', 'hands and no AI.'
+      ]);
+    } else {
+      // footer view — FIND ME social links
+      const fY = h * 0.42;
+      ctx.fillStyle = '#5a4a32';
+      ctx.font = `${w * 0.018}px 'Courier New', monospace`;
+      ctx.fillText('FIND ME —', padL, fY);
+
+      // dashed separator
+      ctx.strokeStyle = '#8a7a52'; ctx.lineWidth = 1;
+      if (ctx.setLineDash) ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.moveTo(padL, fY + h * 0.05); ctx.lineTo(w - padR, fY + h * 0.05); ctx.stroke();
+      if (ctx.setLineDash) ctx.setLineDash([]);
+
+      const rows = [
+        { name: 'Substack',  handle: 'technofables' },
+        { name: 'Instagram', handle: '@rose.technofables' },
+        { name: 'Threads',   handle: '@rose.technofables' }
+      ];
+      rows.forEach((r, i) => {
+        const ry = fY + h * 0.13 + i * h * 0.10;
+        // red star
+        ctx.fillStyle = '#b54a3a';
+        ctx.font = `${w * 0.020}px 'Courier New', monospace`;
+        ctx.fillText('✱', padL, ry);
+        // bold name
+        ctx.fillStyle = '#1a1a1a';
+        ctx.font = `700 ${w * 0.020}px 'Courier New', monospace`;
+        ctx.fillText(r.name, padL + w * 0.04, ry);
+        // handle
+        ctx.fillStyle = '#3a2e1f';
+        ctx.font = `${w * 0.018}px 'Courier New', monospace`;
+        ctx.fillText(r.handle, padL + w * 0.17, ry);
+      });
+
+      // last-updated
+      ctx.fillStyle = '#7a6850';
+      ctx.font = `${w * 0.016}px 'Courier New', monospace`;
+      ctx.fillText('last updated June 2026 · made with my little hands and no AI', padL, h * 0.93);
+    }
+  }
+  drawMotion(ctx, w, h, sl, t) {
+    ctx.fillStyle = '#08060a'; ctx.fillRect(0, 0, w, h);
+    ctx.font = `${w * 0.024}px 'IBM Plex Mono',monospace`; ctx.fillStyle = '#9c7a2a';
+    ctx.fillText('IN-MOTION ART', w * 0.07, h * 0.13);
+    ctx.save(); ctx.translate(w / 2, h * 0.55);
+    const tt = this.state.anim ? t : 1.4;
+    if (sl === 0) {
+      ctx.strokeStyle = '#ffce5c'; ctx.lineWidth = 1.4;
+      for (let k = 0; k < 32; k++) {
+        const a = k / 32 * Math.PI * 2 + tt * 0.5;
+        const r1 = 30 + 8 * Math.sin(tt * 2 + k * 0.4);
+        const r2 = 120 + 30 * Math.sin(tt * 1.3 + k * 0.6);
+        ctx.beginPath();
+        ctx.moveTo(Math.cos(a) * r1, Math.sin(a) * r1);
+        ctx.lineTo(Math.cos(a) * r2, Math.sin(a) * r2);
+        ctx.stroke();
+      }
+    } else if (sl === 1) {
+      for (let k = 0; k < 5; k++) {
+        ctx.strokeStyle = `rgba(255,176,0,${0.25 + k * 0.13})`;
+        ctx.lineWidth = 1.2 + k * 0.2;
+        ctx.beginPath();
+        for (let a = 0; a <= Math.PI * 2 + 0.05; a += 0.05) {
+          const r = 50 + k * 16 + 10 * Math.sin(a * 4 + tt + k);
+          const x = Math.cos(a) * r, y = Math.sin(a) * r * 0.65;
+          if (a === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+    } else {
+      ctx.strokeStyle = '#ffb000'; ctx.lineWidth = 1.6;
+      for (let k = 0; k < 80; k++) {
+        const a = k * 0.4 + tt * 0.6;
+        const r = 4 * k * 0.5;
+        const x = Math.cos(a) * r, y = Math.sin(a) * r;
+        if (k === 0) { ctx.beginPath(); ctx.moveTo(x, y); } else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  drawSandolore(ctx, w, h, sl, t) {
+    const tt = this.state.anim ? t : 1.0;
+    ctx.fillStyle = '#0c0903'; ctx.fillRect(0, 0, w, h);
+    // starfield
+    for (let k = 0; k < 60; k++) {
+      const x = (k * 97.31 + tt * 8) % w;
+      const y = (k * 53.7) % h;
+      ctx.fillStyle = `rgba(255,206,92,${0.18 + (k % 5) * 0.07})`;
+      ctx.fillRect(x, y, 1.4, 1.4);
+    }
+    if (sl === 0) {
+      ctx.fillStyle = '#ffce5c';
+      ctx.font = `italic 700 ${w * 0.07}px Georgia,serif`;
+      ctx.fillText('Sandolore', w * 0.1, h * 0.45);
+      ctx.font = `${w * 0.028}px 'IBM Plex Mono',monospace`;
+      ctx.fillStyle = '#c8780a';
+      ctx.fillText('— a sum flux —', w * 0.12, h * 0.56);
+      ctx.font = `${w * 0.022}px 'IBM Plex Mono',monospace`;
+      ctx.fillStyle = '#9c7a2a';
+      ctx.fillText('AUTHOR · SANDOLORE SYKES', w * 0.1, h * 0.72);
+    } else if (sl === 1) {
+      ctx.fillStyle = '#ffce5c';
+      ctx.font = `700 ${w * 0.035}px 'Helvetica Neue',Arial,sans-serif`;
+      ctx.fillText('BOOKS', w * 0.08, h * 0.2);
+      for (let i = 0; i < 3; i++) {
+        const x = w * 0.08 + i * w * 0.3;
+        const y = h * 0.3, bw = w * 0.22, bh = h * 0.5;
+        ctx.fillStyle = '#1c1409'; ctx.fillRect(x, y, bw, bh);
+        ctx.strokeStyle = 'rgba(255,176,0,0.5)'; ctx.lineWidth = 1.4; ctx.strokeRect(x, y, bw, bh);
+        ctx.fillStyle = '#ffb000';
+        ctx.font = `italic ${w * 0.022}px Georgia,serif`;
+        ctx.fillText(['Vol I', 'Vol II', 'Vol III'][i], x + bw * 0.18, y + bh * 0.55);
+      }
+    } else {
+      ctx.fillStyle = '#ffce5c';
+      ctx.font = `italic ${w * 0.026}px Georgia,serif`;
+      const lines = ['"the wind carried whispers', 'from worlds that had not', 'yet been named..."'];
+      lines.forEach((ln, i) => ctx.fillText(ln, w * 0.12, h * 0.38 + i * h * 0.09));
+      ctx.font = `${w * 0.02}px 'IBM Plex Mono',monospace`;
+      ctx.fillStyle = '#9c7a2a';
+      ctx.fillText('// excerpt', w * 0.12, h * 0.78);
+    }
+  }
+
+  initContactGrid() {
+    const cvs = document.getElementById('cvContact'); if (!cvs) return;
+    const { ctx, w, h } = this.setup(cvs);
+    let vpx = w / 2, vpy = h * 0.46;
+    const drawFrame = (t, off) => {
+      const horizon = vpy;
+      const g = ctx.createLinearGradient(0, 0, 0, horizon);
+      g.addColorStop(0, '#0a0712'); g.addColorStop(1, '#1a0d05');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, horizon);
+      ctx.fillStyle = '#05040a'; ctx.fillRect(0, horizon, w, h - horizon);
+      // stars
+      for (let i = 0; i < 70; i++) {
+        const x = (i * 113.7) % w, y = ((i * 71.3) % (h * 0.45));
+        ctx.fillStyle = `rgba(255,206,92,${0.25 + (i % 5) * 0.08})`;
+        ctx.fillRect(x, y, 1.4, 1.4);
+      }
+      // sun glow
+      const sun = ctx.createRadialGradient(vpx, horizon, 4, vpx, horizon, w * 0.4);
+      sun.addColorStop(0, 'rgba(255,176,0,0.32)'); sun.addColorStop(1, 'transparent');
+      ctx.fillStyle = sun; ctx.fillRect(0, 0, w, h);
+      // horizontals
+      ctx.lineWidth = 1.2;
+      for (let i = 0; i < 22; i++) {
+        const p = (i + off) / 22;
+        const y = horizon + Math.pow(p, 2.4) * (h - horizon);
+        if (y > h) continue;
+        ctx.strokeStyle = `rgba(255,176,0,${0.10 + p * 0.5})`;
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+      // verticals
+      for (let i = -10; i <= 10; i++) {
+        const fx = vpx + i * (w / 12);
+        ctx.strokeStyle = `rgba(255,138,0,${0.12 + Math.abs(i) / 10 * 0.18})`;
+        ctx.beginPath(); ctx.moveTo(vpx + i * 6, horizon); ctx.lineTo(fx, h); ctx.stroke();
+      }
+    };
+    if (!this.state.anim) {
+      vpx = w / 2; vpy = h * 0.46;
+      drawFrame(0, 0); return;
+    }
+    let last = performance.now(), t = 0, off = 0;
+    const draw = (now) => {
+      const dt = (now - last) / 1000; last = now; t += dt; off = (off + dt * 0.6) % 1;
+      const tx = w / 2 + this.gx * w * 0.45;
+      const ty = h * 0.46 + this.gy * h * 0.18;
+      vpx += (tx - vpx) * 0.18; vpy += (ty - vpy) * 0.18;
+      drawFrame(t, off);
+      this._raf.contact = requestAnimationFrame(draw);
+    };
+    this._raf.contact = requestAnimationFrame(draw);
+  }
+
+  renderVals() {
+    const p = this.state.page;
+    const onCh = this.state.channel;
+    const ch = this.CH[onCh];
+    const colFor = (k) => p === k ? '#ffce5c' : '#9c7a2a';
+    const pwrColor = this.state.power ? '#ffb000' : '#5a2a18';
+    const chDigitColor = this.state.power ? '#ffce5c' : '#5a4424';
+    const anim = this.state.anim;
+    return {
+      animFlag: anim ? '1' : '0',
+      dHome: p === 'home' ? 'block' : 'none',
+      dWork: p === 'work' ? 'block' : 'none',
+      dWeb: p === 'websites' ? 'block' : 'none',
+      dContact: p === 'contact' ? 'block' : 'none',
+      dCV: p === 'cv' ? 'block' : 'none',
+      dSweep: (p === 'home' || p === 'work' || p === 'cv') ? 'block' : 'none',
+      colHome: colFor('home'),
+      colWork: colFor('work'),
+      colWeb: colFor('websites'),
+      colContact: colFor('contact'),
+      colCV: colFor('cv'),
+      goHome: () => this.setState({ page: 'home' }),
+      goWork: () => this.setState({ page: 'work' }),
+      goWeb: () => this.setState({ page: 'websites' }),
+      goContact: () => this.setState({ page: 'contact' }),
+      goCV: () => this.setState({ page: 'cv' }),
+      chNum: ch.n, chName: ch.name, curTag: ch.tag, curHref: ch.href, curUrl: ch.url,
+      setCh0: () => this.setState({ channel: 0, slide: 0 }),
+      setCh1: () => this.setState({ channel: 1, slide: 0 }),
+      setCh2: () => this.setState({ channel: 2, slide: 0 }),
+      prevSlide: () => { const slides = this.CH[this.state.channel].slides; this.setState(s => ({ slide: (s.slide + slides - 1) % slides })); },
+      nextSlide: () => { const slides = this.CH[this.state.channel].slides; this.setState(s => ({ slide: (s.slide + 1) % slides })); },
+      togglePower: () => this.setState(s => ({ power: !s.power })),
+      pwrColor,
+      chDigitColor,
+      roseMediaDisplay: (this.state.channel === 0 && this.state.power) ? 'block' : 'none',
+      motionMediaDisplay: (this.state.channel === 1 && this.state.power) ? 'block' : 'none',
+      motionSlide0Display: this.state.slide === 0 ? 'block' : 'none',
+      motionSlide1Display: this.state.slide === 1 ? 'block' : 'none',
+      motionSlide2Display: this.state.slide === 2 ? 'block' : 'none',
+      sandoreMediaDisplay: (this.state.channel === 2 && this.state.power) ? 'block' : 'none',
+      sandoreSlide0Display: this.state.slide === 0 ? 'block' : 'none',
+      sandoreSlide1Display: this.state.slide === 1 ? 'block' : 'none',
+      sandoreSlide2Display: this.state.slide === 2 ? 'block' : 'none',
+      toggleAnim: () => this.setState(s => ({ anim: !s.anim })),
+      toggleLabel: anim ? 'ON' : 'OFF',
+      toggleLabelColor: anim ? '#ffce5c' : '#8a8273',
+      toggleTrack: anim ? 'rgba(255,176,0,0.35)' : 'rgba(80,80,80,0.4)',
+      toggleKnob: anim ? '#ffce5c' : '#6a5430',
+      toggleX: anim ? '17px' : '1px'
+    };
+  }
+}
+</script>
+</body>
+</html>
